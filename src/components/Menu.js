@@ -64,16 +64,17 @@ const rules = {
   "PUB-G":
     "https://drive.google.com/file/d/180pWlZj1hD9qVW7ZNae-YEjJxSBs_Lg1/view?usp=sharing",
 };
-export const Menu = () => {
-    const handleClick = () => {
-        window.open(rules[currSport[0]]);
-    };
-    useEffect(() => {
-        setCurrSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
-    }, []);
+export const Menu = (props) => {
+  useEffect(() => {
+    props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+}, []);
+    // const handleClick = () => {
+    //     window.open(rules[currSport[0]]);
+    // };
 
   return (
     <div className="menu-a">
+      {props.sport}
       <div className="menu-bgimg">
         <img
           className="menu-source-bgimg"
@@ -104,7 +105,7 @@ export const Menu = () => {
           <article
             className="leaderboard__profile"
             id="menu_item3"
-            onClick={handleClick}
+            // onClick={handleClick}
           >
             Rules
           </article>

@@ -66,8 +66,8 @@ export const Dashboard = (props) => {
 //    }, []);
  
    useEffect(() => {
-     window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.currSport));
-   }, [props.currSport]);
+     window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+   }, [props.sport]);
 
    // window.addEventListener("scroll", reveal);
    //   reveal();
