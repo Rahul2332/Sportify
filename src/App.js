@@ -16,7 +16,7 @@ import { Dashboard } from "./components/Dashboard";
 import { Menu } from "./components/Menu";
 // import { ScoreCard } from "./components/ScoreCard";
 // import { ScoreSet } from "./components/ScoreSet";
-// import { CreateFixtures } from "./components/CreateFixtures";
+import { CreateFixtures } from "./components/CreateFixtures";
 import { ViewFixtures } from "./components/ViewFixtures";
 
 // styles
@@ -41,7 +41,7 @@ function App() {
           <Route path="sport-menu" element={<Menu setSport={setCurrSport } sport={currSport}/>} />
           {/* <Route path="score-card" element={<ScoreCard />} />
           <Route path="score-set" element={<ScoreSet />} /> */}
-          {/* <Route path="create-fixtures" element={<CreateFixtures />} /> */}
+          <Route path="create-fixtures" element={<CreateFixtures setSport={setCurrSport } sport={currSport}/>} />
           <Route path="view-fixtures" element={<ViewFixtures/>} />
         </Routes>
         {/* <Footer /> */}

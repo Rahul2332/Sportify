@@ -43,7 +43,6 @@ export const ViewFixtures = () => {
         time.push(data[i].Time);
       }
     }
-    console.log(teamA.length, "teamA");
     for (let i = 0; i <= teamA.length; i++) {
       items.push(
         <div

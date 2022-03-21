@@ -115,23 +115,20 @@ export const Menu = (props) => {
             Rules
           </article>
         </div>
-        {isAdmin ? (
-          <Link
-            to="create-fixtures"
-            role="button"
-            className="leaderboard__name button__link"
-          >
-            <article className="leaderboard__profile" id="menu_item2">
-              Create Fixtures
-            </article>
-          </Link>
-        ) : (
-          <Link to="view-fixtures">
-            <article className="leaderboard__profile" id="menu_item2">
-              Fixtures
-            </article>
-          </Link>
-        )}
+        <Link
+          to="/create-fixtures"
+          role="button"
+          className="leaderboard__name button__link"
+        >
+          <article className="leaderboard__profile" id="menu_item2">
+            Create Fixtures
+          </article>
+        </Link>
+        <Link to="/view-fixtures">
+          <article className="leaderboard__profile" id="menu_item2">
+            Fixtures
+          </article>
+        </Link>
       </main>
     </div>
   );

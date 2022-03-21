@@ -5,10 +5,7 @@ import { useEffect } from "react";
 
 import { isAdmin } from "./Login";
 
-export const CreateFixtures = () => {
-  useEffect(() => {
-    window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
-  }, [props.sport]);
+export const CreateFixtures = (props) => {
   useEffect(() => {
     props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
 }, []);
@@ -32,7 +29,7 @@ export const CreateFixtures = () => {
 
       const database = getDatabase();
 
-      set(ref(database, `${currSport[0]}/Fixture/${team1}`), {
+      set(ref(database, `${props.sport[0]}/Fixture/${team1}`), {
         TeamA: team1,
         TeamB: team2,
         Time: t1,
@@ -87,9 +84,9 @@ export const CreateFixtures = () => {
   }
 
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div style={{ marginTop: "20%" }}>
       
-      {isAdmin ? (
+      {/* {isAdmin ? ( */}
         <>
           <div className="FixtureHeaders">
             <div>
@@ -156,9 +153,9 @@ export const CreateFixtures = () => {
             </button>
           </div>
         </>
-      ) : (
-        <> </>
-      )}
+      {/* ) : (
+        <> </> */}
+      {/* )} */}
     </div>
   );
 };
