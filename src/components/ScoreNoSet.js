@@ -82,6 +82,17 @@ export const ScoreNoSet = () => {
           </a>
         </div>
       </div>
+      <div className="toolbar">
+        <img
+          type="submit"
+          // onClick={fixtures}
+          id="butt"
+          className="btn btn_live refreshBtn"
+          src={refreshIcon}
+          // alt="refresh"
+          style={{ backgroundColor: "lightgreen" }}
+        />
+      </div>
       <div className="row2-container">
         <div className="box box-down cyan">
           <h2 id="TeamA"> Team - A </h2>
@@ -116,17 +127,7 @@ export const ScoreNoSet = () => {
           </div>
         </div>
       </div>
-      <div className="toolbar">
-        <img
-          type="submit"
-          // onClick={fixtures}
-          id="butt"
-          className="btn btn_live refreshBtn"
-          src={refreshIcon}
-          // alt="refresh"
-          style={{ backgroundColor: "lightgreen" }}
-        />
-      </div>
+      
     </div>
   );
 // return (<></>);
