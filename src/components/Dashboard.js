@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
  
 // styles
 import "../styles/card.tile.css";
@@ -61,9 +62,9 @@ const maxETeamPlayers = [6, 2, 6, 5];
 export const Dashboard = (props) => {
    const { currentUser } = useAuth();
 
-//    useEffect(() => {
-//      props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
-//    }, []);
+    useEffect(() => {
+        props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+    }, []);
  
    useEffect(() => {
      window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
@@ -71,6 +72,31 @@ export const Dashboard = (props) => {
 
    // window.addEventListener("scroll", reveal);
    //   reveal();
+
+   const [count, setCount] = useState(1);
+
+   useEffect(() => {
+     setCount(JSON.parse(window.sessionStorage.getItem("count")));
+   }, []);
+ 
+   useEffect(() => {
+     window.sessionStorage.setItem("count", count);
+   }, [count]);
+
+   const navigate = useNavigate();
+   function navg(){
+       navigate("/sport-menu");
+   }
+
+   const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+   async function handleClick(value, index){
+        props.setSport([value, maxTeamPlayers[index], minTeamPlayers[index], "team"]);
+        // navigate("/sport-menu");
+        await sleep(10);
+        navg();
+   }
  
    return (
        <>
@@ -79,7 +105,6 @@ export const Dashboard = (props) => {
                <img src={spandanImg} style={{ width: "100%" }} />
            </div>
  
-
                    <section className="section" id="features">
                        {/* Team Sports */}
                        <div className="container" id="TeamSports">
@@ -99,15 +124,12 @@ export const Dashboard = (props) => {
                        <div className="wrapperCard">
                            <div className="cards">
                                {doubleSports.map((value, index) => {
-                                   return (<Link to="#" 
-                                   onClick={() => 
-                                   props.setSport([value, maxTeamPlayers[index], minTeamPlayers[index], "team"])
-                                   }>
-                                       <figure className="card">
+                                   return (
+                                       <figure className="card"
+                                       onClick={()=> handleClick(value, index)}>
                                            <img src={DoublesSportImgs[index]} />
                                            <figcaption style={{ transform: "none", fontSize: "smaller" }}>{value}</figcaption>
-                                       </figure>
-                                   </Link>)
+                                       </figure>)
                                })}
                            </div>
                        </div>

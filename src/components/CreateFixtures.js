@@ -1,10 +1,18 @@
 import React from "react";
 import "../styles/createFixtures.css";
 import { getDatabase, ref, set, push, update } from "firebase/database";
+import { useEffect } from "react";
 
 import { isAdmin } from "./Login";
 
 export const CreateFixtures = () => {
+  useEffect(() => {
+    window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+  }, [props.sport]);
+  useEffect(() => {
+    props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+}, []);
+
   var totalFixtures = 1;
   // document.getElementById("butt1").addEventListener("click", (e) => {
   function createFixture(index) {

@@ -67,7 +67,11 @@ const rules = {
 export const Menu = (props) => {
   useEffect(() => {
     props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+    console.log(props.sport)
 }, []);
+  // useEffect(() => {
+  //   window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+  // }, [props.sport]);
     // const handleClick = () => {
     //     window.open(rules[currSport[0]]);
     // };
@@ -83,6 +87,7 @@ export const Menu = (props) => {
         />
       </div>
       <main className="leaderboard__profiles">
+        <h2>{props.sport[0]}</h2>
         <Link
           to="/register-for-sport"
           role="button"
