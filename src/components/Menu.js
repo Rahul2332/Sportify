@@ -64,16 +64,21 @@ const rules = {
   "PUB-G":
     "https://drive.google.com/file/d/180pWlZj1hD9qVW7ZNae-YEjJxSBs_Lg1/view?usp=sharing",
 };
-export const Menu = () => {
-    const handleClick = () => {
-        window.open(rules[currSport[0]]);
-    };
-    useEffect(() => {
-        setCurrSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
-    }, []);
+export const Menu = (props) => {
+  useEffect(() => {
+    props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+    console.log(props.sport)
+}, []);
+  // useEffect(() => {
+  //   window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+  // }, [props.sport]);
+    // const handleClick = () => {
+    //     window.open(rules[currSport[0]]);
+    // };
 
   return (
     <div className="menu-a">
+      {props.sport}
       <div className="menu-bgimg">
         <img
           className="menu-source-bgimg"
@@ -82,6 +87,7 @@ export const Menu = () => {
         />
       </div>
       <main className="leaderboard__profiles">
+        <h2>{props.sport[0]}</h2>
         <Link
           to="/register-for-sport"
           role="button"
@@ -104,28 +110,25 @@ export const Menu = () => {
           <article
             className="leaderboard__profile"
             id="menu_item3"
-            onClick={handleClick}
+            // onClick={handleClick}
           >
             Rules
           </article>
         </div>
-        {isAdmin ? (
-          <Link
-            to="create-fixtures"
-            role="button"
-            className="leaderboard__name button__link"
-          >
-            <article className="leaderboard__profile" id="menu_item2">
-              Create Fixtures
-            </article>
-          </Link>
-        ) : (
-          <Link to="view-fixtures">
-            <article className="leaderboard__profile" id="menu_item2">
-              Fixtures
-            </article>
-          </Link>
-        )}
+        <Link
+          to="/create-fixtures"
+          role="button"
+          className="leaderboard__name button__link"
+        >
+          <article className="leaderboard__profile" id="menu_item2">
+            Create Fixtures
+          </article>
+        </Link>
+        <Link to="/view-fixtures">
+          <article className="leaderboard__profile" id="menu_item2">
+            Fixtures
+          </article>
+        </Link>
       </main>
     </div>
   );

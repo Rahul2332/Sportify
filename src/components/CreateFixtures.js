@@ -1,10 +1,15 @@
 import React from "react";
 import "../styles/createFixtures.css";
 import { getDatabase, ref, set, push, update } from "firebase/database";
+import { useEffect } from "react";
 
 import { isAdmin } from "./Login";
 
-export const CreateFixtures = () => {
+export const CreateFixtures = (props) => {
+  useEffect(() => {
+    props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+}, []);
+
   var totalFixtures = 1;
   // document.getElementById("butt1").addEventListener("click", (e) => {
   function createFixture(index) {
@@ -24,7 +29,7 @@ export const CreateFixtures = () => {
 
       const database = getDatabase();
 
-      set(ref(database, `${currSport[0]}/Fixture/${team1}`), {
+      set(ref(database, `${props.sport[0]}/Fixture/${team1}`), {
         TeamA: team1,
         TeamB: team2,
         Time: t1,
@@ -79,9 +84,9 @@ export const CreateFixtures = () => {
   }
 
   return (
-    <div style={{ marginTop: "10%" }}>
+    <div style={{ marginTop: "20%" }}>
       
-      {isAdmin ? (
+      {/* {isAdmin ? ( */}
         <>
           <div className="FixtureHeaders">
             <div>
@@ -148,9 +153,9 @@ export const CreateFixtures = () => {
             </button>
           </div>
         </>
-      ) : (
-        <> </>
-      )}
+      {/* ) : (
+        <> </> */}
+      {/* )} */}
     </div>
   );
 };

@@ -14,7 +14,7 @@ export const About = () => {
   }, [count]);
 
   return (
-    <div className="App">
+    <div className="App" style={{marginTop: "200px"}}>
       <h1>Count: {count}</h1>
       <button onClick={() => setCount(count + 1)}>+</button>
       <div>
