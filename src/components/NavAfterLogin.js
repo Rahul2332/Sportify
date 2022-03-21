@@ -19,9 +19,9 @@ export const NavAfterLogin = () => {
  return (
    <header
      className="header-area  header-sticky background-header"
-     style={{ top: "0", position: "fixed", backgroundColor: "white" }}
+     style={{ top: "0", position: "fixed", backgroundColor: "transparent" }}
    >
-     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+     <nav id="NavbarID" className="navbar navbar-expand-lg navbar-dark bg-dark">
        <div className="container-fluid">
          <a className="navbar-brand" href="#" style={{
            fontSize: "32px",
@@ -103,13 +103,14 @@ export const NavAfterLogin = () => {
                Logout
              </button>
            </li> */}
-                      <ul className="navbar-nav" >
+          <ul className="navbar-nav" id="SignupBtnID" >
            <li className="nav-item" style={{
              minWidth: "200px", display: "flex",
              justifyContent: "center"
            }}>
              <Link to="/admin-signup">
                <button
+                 
                  className="btn btn-danger ms-4"
                  type="button"
                >

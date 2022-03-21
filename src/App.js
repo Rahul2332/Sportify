@@ -15,7 +15,8 @@ import { Dashboard } from "./components/Dashboard";
 // import { RegisteredTeams } from "./components/RegisteredTeams";
 import { Menu } from "./components/Menu";
 // import { ScoreCard } from "./components/ScoreCard";
-// import { ScoreSet } from "./components/ScoreSet";
+import { ScoreSet } from "./components/ScoreSet";
+import { ScoreNoSet } from "./components/ScoreNoSet";
 import { CreateFixtures } from "./components/CreateFixtures";
 import { ViewFixtures } from "./components/ViewFixtures";
 
@@ -39,8 +40,9 @@ function App() {
           {/* <Route path="register-for-sport" element={<RegisterForSport setSport={setCurrSport } sport={currSport}/>} /> */}
           {/* <Route path="registered-teams" element={<RegisteredTeams />} /> */}
           <Route path="sport-menu" element={<Menu setSport={setCurrSport } sport={currSport}/>} />
-          {/* <Route path="score-card" element={<ScoreCard />} />
-          <Route path="score-set" element={<ScoreSet />} /> */}
+          {/* <Route path="score-card" element={<ScoreCard />} /> */}
+          <Route path="score-set" element={<ScoreSet />} />
+          <Route path="score-no-set" element={<ScoreNoSet />} />
           <Route path="create-fixtures" element={<CreateFixtures setSport={setCurrSport } sport={currSport}/>} />
           <Route path="view-fixtures" element={<ViewFixtures/>} />
         </Routes>
