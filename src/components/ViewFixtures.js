@@ -14,9 +14,43 @@ import {
 } from "firebase/database";
 
 export const ViewFixtures = (props) => {
+  let SportsWithSets = [
+		'Tennis Doubles',
+		'Badminton Men Doubles',
+		'Badminton Women Doubles',
+		'Badminton Mixed Doubles',
+		'Table Tennis Doubles',
+		'Volleyball',
+		'Tug Of War',
+		'Carrom',
+		'Tennis Singles',
+		'Badminton Men Singles',
+		'Badminton Women Singles',
+		'T.T. Men Singles',
+		'T.T. Women Singles',
+	];
+
+	let SportsWithoutSet = [
+		'Football',
+		'Basketball 3v3',
+		'Basketball 5v5',
+		'Cricket',
+		'Gully Cricket',
+		'Foosball',
+		'Chess',
+	];
+
   useEffect(() => {
     props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
   }, []);
+
+  useEffect(() => {
+    props.setTeamKey(window.sessionStorage.getItem("teamKey"));
+  }, []);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("teamKey", props.teamKey);
+  }, [props.teamKey]);
 
   const navigate = useNavigate();
 
@@ -38,33 +72,63 @@ export const ViewFixtures = (props) => {
     return returnArr;
   }
 
-  // function navg(){
-  //   navigate("/score-set");
-  // }
-  // firebase.initializeApp(firebaseConfig);
-  // console.log("Helol");
+  function navg(){
+    navigate("/score-set")
+  }
+
+  function sortFixtures(){
+		for (let i = 0; i < date.length; i++) {
+			for (let j = 0; j < date.length - 1 - i; j++) {
+				if (date[j].substring(8,10) > date[j+1].substring(8,10)) {
+					[date[j], date[j+1]] = [date[j+1], date[j]];
+					[time[j], time[j+1]] = [time[j+1], time[j]];
+					[teamA[j], teamA[j+1]] = [teamA[j+1], teamA[j]];
+					[teamB[j], teamB[j+1]] = [teamB[j+1], teamB[j]];
+				}else if(date[j].substring(8,10) == date[j+1].substring(8,10)){
+					if(time[j].substring(0,3)>time[j+1].substring(0,3)){
+						[date[j], date[j+1]] = [date[j+1], date[j]];
+						[time[j], time[j+1]] = [time[j+1], time[j]];
+						[teamA[j], teamA[j+1]] = [teamA[j+1], teamA[j]];
+						[teamB[j], teamB[j+1]] = [teamB[j+1], teamB[j]];
+					}else if(time[j].substring(0,3)==time[j+1].substring(0,3)){
+						if(time[j].substring(3,5)>time[j+1].substring(3,5)){
+							[date[j], date[j+1]] = [date[j+1], date[j]];
+							[time[j], time[j+1]] = [time[j+1], time[j]];
+							[teamA[j], teamA[j+1]] = [teamA[j+1], teamA[j]];
+							[teamB[j], teamB[j+1]] = [teamB[j+1], teamB[j]];
+						}
+					}		
+				}
+			}
+		}
+	}
+
   const dbRef = ref(getDatabase());
   get(child(dbRef, `${props.sport[0]}/Fixture/`)).then((snapshot) => {
+    const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     if (snapshot.exists()) {
       data = snapshotToArray(snapshot);
-      console.log(data);
+      // console.log(data);
       for (let i = 0; i < data.length; i++) {
         teamA.push(data[i].TeamA);
         teamB.push(data[i].TeamB);
         date.push(data[i].Date);
         time.push(data[i].Time);
       }
-      console.log(teamA, teamB, time, date)
+      sortFixtures();
+      // console.log(teamA, teamB, time, date)
       // console.log(teamA.length);
-      let main = document.getElementById("fixtures");
       for (let i = 0; i < teamA.length; i++) {
-        console.log(teamA[i], teamB[i], i);
+        // console.log(teamA[i], teamB[i], i);
         let box = document.createElement("div");
         let teamAInp = document.createElement("article");
         let teamBInp = document.createElement("article");
         let timeInp = document.createElement("article");
         let dateInp = document.createElement("article");
         let viewBtn = document.createElement("article");
+        let anchor = document.createElement("a");
 
         box.classList.add("viewFixtures-leaderboard__name");
         box.classList.add("viewFixtures-button__link");
@@ -87,10 +151,20 @@ export const ViewFixtures = (props) => {
         timeInp.setAttribute("id", `time_${i}`);
         timeInp.innerHTML = time[i];
 
+        if(SportsWithSets.indexOf(props.sport[0]) != -1)
+          anchor.setAttribute("href", "/score-set");
+        if(SportsWithoutSet.indexOf(props.sport[0]) != -1)
+          anchor.setAttribute("href", "/score-no-set");
+        
         viewBtn.classList.add("viewFixtures-Submit");
         viewBtn.setAttribute("id", `v${i}`);
         viewBtn.innerHTML = "View";
-        // viewBtn.onclick = navg;
+        // viewBtn.onclick = async () => { keySetTeam(teamA[i] + teamB[i]); };
+        // viewBtn.setAttribute("onclick", `keySetTeam(${teamA[i] + teamB[i]})`);
+        viewBtn.onclick = function (){
+          props.setTeamKey(teamA[i] + teamB[i]);
+        }
+        anchor.appendChild(viewBtn);
 
         // let checkForBox = !!document.getElementById(`box${i}`);
         if (document.getElementById(`box${i}`) == null) {
@@ -98,7 +172,7 @@ export const ViewFixtures = (props) => {
           box.appendChild(teamBInp);
           box.appendChild(dateInp);
           box.appendChild(timeInp);
-          box.appendChild(viewBtn);
+          box.appendChild(anchor);
           document.getElementById("fixtures").appendChild(box);
         }
       }

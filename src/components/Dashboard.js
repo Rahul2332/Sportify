@@ -62,6 +62,13 @@ const maxETeamPlayers = [6, 2, 6, 5];
 
 export const Dashboard = (props) => {
    const { currentUser } = useAuth();
+    useEffect(() => {
+            props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+    }, []);
+
+    useEffect(() => {
+        window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+    }, [props.sport]);
 
    window.addEventListener("scroll", revealLeft);
     window.addEventListener("scroll", revealRight);
@@ -146,40 +153,15 @@ export const Dashboard = (props) => {
         }
     }
 
-    useEffect(() => {
-        props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
-    }, []);
- 
-   useEffect(() => {
-     window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
-   }, [props.sport]);
-
-   // window.addEventListener("scroll", reveal);
-   //   reveal();
-
-   const [count, setCount] = useState(1);
-
-   useEffect(() => {
-     setCount(JSON.parse(window.sessionStorage.getItem("count")));
-   }, []);
- 
-   useEffect(() => {
-     window.sessionStorage.setItem("count", count);
-   }, [count]);
-
    const navigate = useNavigate();
-   function navg(){
-       navigate("/sport-menu");
-   }
 
    const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
    async function handleClick(value, index){
         props.setSport([value, maxTeamPlayers[index], minTeamPlayers[index], "team"]);
-        // navigate("/sport-menu");
         await sleep(10);
-        navg();
+        navigate("/sport-menu");
    }
  
    return (
