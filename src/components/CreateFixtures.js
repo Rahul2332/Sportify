@@ -64,13 +64,13 @@ export const CreateFixtures = (props) => {
 					placeholder='Team-2'
 				/>
 				<input
-					type='text'
+					type='date'
 					className='createFixtures-leaderboard__profile'
 					id={'date_' + i}
 					placeholder='Date'
 				/>
 				<input
-					type='text'
+					type='time'
 					className='createFixtures-leaderboard__profile'
 					id={'time_' + i}
 					placeholder='Time'
