@@ -44,7 +44,7 @@ function App() {
           <Route path="score-set" element={<ScoreSet />} />
           <Route path="score-no-set" element={<ScoreNoSet />} />
           <Route path="create-fixtures" element={<CreateFixtures setSport={setCurrSport } sport={currSport}/>} />
-          <Route path="view-fixtures" element={<ViewFixtures/>} />
+          <Route path="view-fixtures" element={<ViewFixtures setSport={setCurrSport} sport={currSport}/>} />
         </Routes>
         {/* <Footer /> */}
       </AuthProvider>
