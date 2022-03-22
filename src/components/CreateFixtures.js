@@ -65,7 +65,7 @@ export const CreateFixtures = (props) => {
 				/>
 				<input
 					type='text'
-					className='createFixtures-leaderboard__profile'
+					className='createFixtures-leaderboard__profile dateContainer'
 					id={'date_' + i}
 					placeholder='Date'
 				/>
@@ -88,11 +88,11 @@ export const CreateFixtures = (props) => {
 	console.log(items);
 
 	return (
-		<div style={{ marginTop: '20%' }}>
+		<div style={{ marginTop: '100px' }}>
 			{/* {isAdmin ? ( */}
-			<div>
+			<div class="CreateFixtureMaxDiv" style={{marginBottom:"30px"}}>
 				<h3>{props.sport[0]}</h3>
-				<label> Enter the number of fixtures you want to create</label>
+				<label style={{textAlign:"center"}}> Enter the number of fixtures you want to create</label>
 				<input
 					value={input}
 					onChange={(e) => {
@@ -122,7 +122,7 @@ export const CreateFixtures = (props) => {
 					id='add_fixture_db'
 					onClick={() => handleClick()}
 				>
-					Add Fixtures
+					SUBMIT
 				</button>
 			</div>
 		</div>
