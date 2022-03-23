@@ -61,33 +61,49 @@ export const ViewFixtures = (props) => {
         console.log(teamA[i], teamB[i], i);
         let box = document.createElement("div");
         let teamAInp = document.createElement("article");
+        let Versus = document.createElement("article");
         let teamBInp = document.createElement("article");
+        let lineSeperator = document.createElement("article");
         let timeInp = document.createElement("article");
         let dateInp = document.createElement("article");
         let viewBtn = document.createElement("article");
 
-        box.classList.add("viewFixtures-leaderboard__name");
-        box.classList.add("viewFixtures-button__link");
+        box.classList.add("viewFixtures-leaderboard__name","viewFixtures-leaderboard__name-mobile");
+        box.classList.add("viewFixtures-button__link","viewFixtures-button__link-mobile");
         box.setAttribute("role", "button");
         box.setAttribute("id", `box${i}`);
 
         teamAInp.classList.add("viewFixtures-leaderboard__profile");
+        teamAInp.classList.add("fixturesTeam-mobile");
         teamAInp.setAttribute("id", `teamA_${i}`);
         teamAInp.innerHTML = teamA[i];
 
+        //Versus
+        Versus.classList.add("versusCSS");
+        // Versus.setAttribute("id", `teamA_${i}`);
+        Versus.innerHTML = "V/S";
+
         teamBInp.classList.add("viewFixtures-leaderboard__profile");
+        teamBInp.classList.add("fixturesTeam-mobile");
         teamBInp.setAttribute("id", `teamB_${i}`);
         teamBInp.innerHTML = teamB[i];
 
+        lineSeperator.classList.add("lineCSS");
+        lineSeperator.innerHTML = "";
+
         dateInp.classList.add("viewFixtures-leaderboard__profile");
+        dateInp.classList.add("date-time");
         dateInp.setAttribute("id", `date_${i}`);
+        // dateInp.setAttribute("marginTop", "20px");
         dateInp.innerHTML = date[i];
 
         timeInp.classList.add("viewFixtures-leaderboard__profile");
+        timeInp.classList.add("date-time");
         timeInp.setAttribute("id", `time_${i}`);
         timeInp.innerHTML = time[i];
 
         viewBtn.classList.add("viewFixtures-Submit");
+        viewBtn.classList.add("viewFixtures-Submit-mobile");
         viewBtn.setAttribute("id", `v${i}`);
         viewBtn.innerHTML = "View";
         // viewBtn.onclick = navg;
@@ -95,7 +111,9 @@ export const ViewFixtures = (props) => {
         // let checkForBox = !!document.getElementById(`box${i}`);
         if (document.getElementById(`box${i}`) == null) {
           box.appendChild(teamAInp);
+          box.appendChild(Versus);
           box.appendChild(teamBInp);
+          box.appendChild(lineSeperator);
           box.appendChild(dateInp);
           box.appendChild(timeInp);
           box.appendChild(viewBtn);
@@ -106,10 +124,10 @@ export const ViewFixtures = (props) => {
   })
 
   return (
-    <div style={{ marginTop: "10%" }}>
-      <h2>{props.sport[0]}</h2>
-      <article className="viewFixtures-leaderboard">
-        <div className="FixtureHeaders">
+    <div style={{ marginTop: "120px" }}>
+      <h2 className="SportsName">{props.sport[0]}</h2>
+      <article className="viewFixtures-leaderboard viewFixtures-leaderboard-mobile">
+        <div className="FixtureHeaders FixtureHeaders-mobile">
           <div>
             <h2> Team - 1 </h2>
           </div>
@@ -126,7 +144,7 @@ export const ViewFixtures = (props) => {
             <h2> View Score </h2>
           </div>
         </div>
-        <main className="viewFixtures-leaderboard__profiles" id="fixtures">
+        <main className="viewFixtures-leaderboard__profiles viewFixtures-leaderboard__profiles-mobile" id="fixtures">
         </main>
       </article>
     </div>
