@@ -12,11 +12,16 @@
     --weight3: 600;
 }
 
+
 /* body {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
     background-color: var(--veryLightGray);
 } */
+
+.hiderClass {
+    display: none;
+}
 
 .attribution {
     font-size: 11px;
@@ -68,11 +73,12 @@ h1:last-of-type {
     text-align: center;
 }
 
+
 /* img {
     float: right;
 } */
 
-#butt{
+#butt {
     margin-top: 15px;
     /* width: 80px; */
 }
@@ -81,29 +87,27 @@ h1:last-of-type {
     .box {
         height: 200px;
     }
-    #setWinsID{
+    #setWinsID {
         height: 100px;
         padding-top: 0px;
-        
     }
-    #setWinsID p{
+    #setWinsID p {
         font-size: x-large;
     }
-
-    #scoreMobileID p{
+    #scoreMobileID p {
         font-size: large;
     }
-    #TeamA{
+    #TeamA {
         font-size: x-large;
     }
-    #TeamB{
+    #TeamB {
         font-size: x-large;
     }
-    #butt{
+    #butt {
         margin-top: 15px;
         width: 80px;
     }
-    #StatusID .btn{
+    #StatusID .btn {
         width: 150px !important;
     }
 }
@@ -159,7 +163,6 @@ h2 {
     .box {
         width: 100%;
         max-width: 500px;
-        
     }
     .header p {
         width: 30%;
@@ -184,7 +187,8 @@ h2 {
     /* height: 100%; */
     margin-top: 40px;
 }
-.set-finals p{
+
+.set-finals p {
     font-size: xx-large;
 }
 
@@ -362,7 +366,7 @@ h2 {
     padding-right: 22px;
 }
 
-.refreshBtn{
+.refreshBtn {
     max-width: 100px;
 }
 
@@ -555,7 +559,7 @@ small b {
     }
 }
 
-.ScoreCardCreate{
+.ScoreCardCreate {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -567,10 +571,9 @@ small b {
     position: relative;
     border-radius: 20px 20px 20px 20px;
     overflow: hidden;
-
 }
 
-.ScoreCardCreate h3{
+.ScoreCardCreate h3 {
     text-transform: uppercase;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
@@ -578,14 +581,16 @@ small b {
     color: #00165a;
     text-align: center;
 }
-.ScoreCardCreate label{
+
+.ScoreCardCreate label {
     /* text-transform: uppercase; */
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: x-large;
     /* color: #00165a; */
 }
-.ScoreCardCreate input{
+
+.ScoreCardCreate input {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: large;

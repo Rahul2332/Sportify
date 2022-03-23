@@ -18,7 +18,8 @@ export const NavAfterLogin = (props) => {
    try {
      await logout();
      props.setAdmin(false);
-     navigate.push("/");
+     navigate("/");
+     navigate(0);
    } catch {
      setError("Logout Failed");
    }

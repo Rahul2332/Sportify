@@ -34,6 +34,7 @@ export const ScoreSet = (props) => {
       if (snapshot.exists()) {
         var TeamName1 = snapshot.val()["TeamA"];
         var TeamName2 = snapshot.val()["TeamB"];
+        var status = snapshot.val()["Status"];
         var score1 = snapshot.val()["ScoreA"];
         var score2 = snapshot.val()["ScoreB"];
         var team11 = snapshot.val()["Aset1"];
@@ -53,6 +54,13 @@ export const ScoreSet = (props) => {
         document.getElementById("setB1").innerText = team21;
         document.getElementById("setB2").innerText = team22;
         document.getElementById("setB3").innerText = team23;
+
+        // changing status of event
+        let U = document.getElementById("upcomming-status");
+        if(status == "Upcomming"){
+          U.classList.toggle("hiderClass");
+          
+        }
 
         let TeamAScore = 0, TeamBScore = 0;
 
@@ -84,18 +92,19 @@ export const ScoreSet = (props) => {
       <div style={
         {
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }
       }>
         <div id="StatusID" className="toolbar">
-          <a className="btn btn_live"
-            style={
-              { display: "none" }
-            }>
+          <a className="btn btn_live" id="live-status"
+            // style={
+            //   { display: "none" }
+            // }
+            >
             Live
             <span className="live-icon"></span>
           </a>
-          <a href="#" className="btn btn_live"
+          <a className="btn btn_live" id="upcomming-status"
             style={
               {
                 backgroundColor: "grey",
@@ -105,11 +114,12 @@ export const ScoreSet = (props) => {
             }>
             Upcoming
           </a>
-          <a href="#" className="btn btn_live"
+          <a className="btn btn_live" id="finished-status"
             style={
               {
                 backgroundColor: "greenyellow",
-                color: "black"
+                color: "black",
+                display: "none"
               }
             }>
             Finished
