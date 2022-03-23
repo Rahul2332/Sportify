@@ -53,11 +53,11 @@ export const ViewFixtures = (props) => {
   }, []);
 
   useEffect(() => {
-    props.setTeamKey(window.sessionStorage.getItem("teamKey"));
+    props.setTeamKey(JSON.parse(window.sessionStorage.getItem("teamKey")));
   }, []);
 
   useEffect(() => {
-    window.sessionStorage.setItem("teamKey", props.teamKey);
+    window.sessionStorage.setItem("teamKey", JSON.stringify(props.teamKey));
   }, [props.teamKey]);
 
   const navigate = useNavigate();
@@ -188,10 +188,13 @@ export const ViewFixtures = (props) => {
         anchor.classList.add("viewFixtures-Submit-mobile");
         viewBtn.setAttribute("id", `v${i}`);
         viewBtn.innerHTML = "View";
+        if(props.isAdmin){
+          viewBtn.innerHTML = "Update"
+        }
         // viewBtn.onclick = async () => { keySetTeam(teamA[i] + teamB[i]); };
         // viewBtn.setAttribute("onclick", `keySetTeam(${teamA[i] + teamB[i]})`);
         viewBtn.onclick = async function (){
-          props.setTeamKey(teamA[i] + teamB[i]);
+          props.setTeamKey([teamA[i], teamB[i]]);
           await sleep(10);
         }
         anchor.appendChild(viewBtn);
@@ -229,7 +232,8 @@ export const ViewFixtures = (props) => {
             <h2> Time </h2>
           </div>
           <div>
-            <h2> View Score </h2>
+            {props.isAdmin ? 
+            <h2> Update Score </h2>: <h2> View Score</h2>}
           </div>
         </div>
         <main className="viewFixtures-leaderboard__profiles viewFixtures-leaderboard__profiles-mobile" id="fixtures">

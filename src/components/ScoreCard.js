@@ -37,6 +37,10 @@ export const ScoreCard = (props) => {
         'Chess',
     ];
 
+    useEffect(() => {
+        props.setTeamKey(JSON.parse(window.sessionStorage.getItem("teamKey")));
+    }, []);
+
     async function StartMatch(e) {
         e.preventDefault()
         var TeamName1 = document.getElementById('TeamName1').value;
@@ -59,8 +63,8 @@ export const ScoreCard = (props) => {
 
     async function addFixture(e) {
         e.preventDefault()
-        var TeamName1 = document.getElementById('TeamName1').value;
-        var TeamName2 = document.getElementById('TeamName2').value;
+        // var TeamName1 = document.getElementById('TeamName1').value;
+        // var TeamName2 = document.getElementById('TeamName2').value;
         var scoreA = document.getElementById('score1').value;
         var scoreB = document.getElementById('score2').value;
 
@@ -81,11 +85,12 @@ export const ScoreCard = (props) => {
         }
 
         const database = getDatabase();
-        update(ref(database, `${props.sport[0]}/Fixture/${TeamName1 + TeamName2}`), {
-            TeamA: TeamName1,
-            TeamB: TeamName2,
+        update(ref(database, `${props.sport[0]}/Fixture/${props.teamKey[0] + props.teamKey[1]}`), {
+            TeamA: props.teamKey[0],
+            TeamB: props.teamKey[1],
             ScoreA: scoreA,
             ScoreB: scoreB,
+            Status: "Upcoming",
             Aset1: team11,
             Aset2: team12,
             Aset3: team13,
@@ -118,9 +123,8 @@ export const ScoreCard = (props) => {
 
             <div className="row1-container">
                 <div className="box box-down cyan">
-                    <h2>Team-A</h2>
+                    <h2>{props.teamKey[0]}</h2>
                     <div className="updateScore">
-                        <div className="fields">Name-A<input id="TeamName1" /></div>
                         <div className="fields">Score<input id="score1" type="number"/></div>
                         {SportsWithSets.indexOf(props.sport[0]) != -1 ? <>
                             <div className="fields">Enter Score Set 1<input id="team11" type="number"/></div>
@@ -132,9 +136,8 @@ export const ScoreCard = (props) => {
                 </div>
 
                 <div className="box box-down blue">
-                    <h2>Team-B</h2>
+                    <h2>{props.teamKey[1]}</h2>
                     <div className="updateScore">
-                        <div className="fields">Name-A<input id="TeamName2" /></div>
                         <div className="fields">Score<input id="score2" type="number"/></div>
                         {SportsWithSets.indexOf(props.sport[0]) != -1 ? <>
                             <div className="fields">Enter Score Set 1<input id="team21" type="number"/></div>

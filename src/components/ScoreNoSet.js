@@ -20,13 +20,13 @@ export const ScoreNoSet = (props) => {
   }, []);
 
   useEffect(() => {
-    props.setTeamKey(window.sessionStorage.getItem("teamKey"));
+    props.setTeamKey(JSON.parse(window.sessionStorage.getItem("teamKey")));
   }, []);
 
   fixtures();
 
   function fixtures() {
-    var key = props.teamKey;
+    var key = props.teamKey[0] + props.teamKey[1];
 
     const dbRef = ref(getDatabase());
     get(child(dbRef, `${props.sport[0]}/Fixture/${key}`)).then((snapshot) => {
