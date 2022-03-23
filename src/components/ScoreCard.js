@@ -101,10 +101,16 @@ export const ScoreCard = (props) => {
                 <h3>{props.sport[0]}</h3>
                 <div className="row1-container">
                     <div className="row1-container toolbar" style={{paddingBottom:"10px"}}>
-                        <input type="submit" onClick={StartMatch} id="Startbutt" className="btn btn_live" value="Start" style={{color:"#009900"}} />
+                        <input type="submit" 
+                        // onClick={StartMatch} 
+                        id="Startbutt" className="btn btn_live" 
+                        value="Start" style={{color:"#009900"}} />
                     </div>
                     <div className="row1-container toolbar" style={{paddingBottom:"10px"}}>
-                        <input type="submit" onClick={EndMatch} id="Endbutt" className="btn btn_live" value="End" style={{color:"#D2042D"}}/>
+                        <input type="submit" 
+                        // onClick={EndMatch} 
+                        id="Endbutt" className="btn btn_live" 
+                        value="End" style={{color:"#D2042D"}}/>
                     </div>
                 </div>
             </div>
