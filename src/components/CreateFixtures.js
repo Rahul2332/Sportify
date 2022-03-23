@@ -34,6 +34,8 @@ export const CreateFixtures = (props) => {
 				TeamB: team2,
 				Time: time,
 				Date: date,
+				ScoreA: '0',
+				ScoreB: '0',
 				Aset1: '0',
 				Aset2: '0',
 				Aset3: '0',
@@ -45,6 +47,15 @@ export const CreateFixtures = (props) => {
 	}
 
 	const items = [];
+	console.log(props.sport[3])
+	if (props.sport[3] === "team") {
+		var x1 = "Team-1"
+		var x2 = "Team-2"
+	}
+	else {
+		var x1 = "Participant-1"
+		var x2 = "Participant-2"
+	}
 	for (let i = 0; i < input; i++) {
 		items.push(
 			<div
@@ -54,14 +65,14 @@ export const CreateFixtures = (props) => {
 					type='text'
 					className='createFixtures-leaderboard__profile'
 					id={'teamA_' + i}
-					placeholder='Team-1'
+					placeholder={x1}
 				/>
 				<p className='fixture-inline'> V / S </p>
 				<input
 					type='text'
 					className='createFixtures-leaderboard__profile'
 					id={'teamB_' + i}
-					placeholder='Team-2'
+					placeholder={x2}
 				/>
 				<input
 					type='date'
@@ -90,9 +101,9 @@ export const CreateFixtures = (props) => {
 	return (
 		<div style={{ marginTop: '100px' }}>
 			{/* {isAdmin ? ( */}
-			<div class="CreateFixtureMaxDiv" style={{marginBottom:"30px"}}>
+			<div class="CreateFixtureMaxDiv" style={{ marginBottom: "30px" }}>
 				<h3>{props.sport[0]}</h3>
-				<label style={{textAlign:"center"}}> Enter the number of fixtures you want to create</label>
+				<label style={{ textAlign: "center" }}> Enter the number of fixtures you want to create</label>
 				<input
 					value={input}
 					onChange={(e) => {
