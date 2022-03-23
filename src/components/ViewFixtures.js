@@ -171,8 +171,8 @@ export const ViewFixtures = (props) => {
         if(SportsWithoutSet.indexOf(props.sport[0]) != -1)
           anchor.setAttribute("href", "/score-no-set");
         
-        viewBtn.classList.add("viewFixtures-Submit");
-        viewBtn.classList.add("viewFixtures-Submit-mobile");
+        anchor.classList.add("viewFixtures-Submit");
+        anchor.classList.add("viewFixtures-Submit-mobile");
         viewBtn.setAttribute("id", `v${i}`);
         viewBtn.innerHTML = "View";
         // viewBtn.onclick = async () => { keySetTeam(teamA[i] + teamB[i]); };
