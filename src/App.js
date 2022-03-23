@@ -27,6 +27,7 @@ import "./styles/bootstrap.min.css";
 
 function App() {
   const [currSport, setCurrSport] = useState([]);
+  const [teamKey, setTeamKey] = useState("");
   
   return (
     <Router>
@@ -41,10 +42,10 @@ function App() {
           {/* <Route path="registered-teams" element={<RegisteredTeams />} /> */}
           <Route path="sport-menu" element={<Menu setSport={setCurrSport } sport={currSport}/>} />
           {/* <Route path="score-card" element={<ScoreCard />} /> */}
-          <Route path="score-set" element={<ScoreSet />} />
+          <Route path="score-set" element={<ScoreSet setSport={setCurrSport } sport={currSport} teamKey={teamKey} setTeamKey={setTeamKey}/>} />
           <Route path="score-no-set" element={<ScoreNoSet />} />
           <Route path="create-fixtures" element={<CreateFixtures setSport={setCurrSport } sport={currSport}/>} />
-          <Route path="view-fixtures" element={<ViewFixtures setSport={setCurrSport} sport={currSport}/>} />
+          <Route path="view-fixtures" element={<ViewFixtures setSport={setCurrSport} sport={currSport} teamKey={teamKey} setTeamKey={setTeamKey} />}/>
         </Routes>
         {/* <Footer /> */}
       </AuthProvider>

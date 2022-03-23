@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
- 
+
 // styles
 import "../styles/card.tile.css";
 // import "../styles/card.tile.hower.css";
@@ -61,9 +61,16 @@ const maxETeamPlayers = [6, 2, 6, 5];
 
 
 export const Dashboard = (props) => {
-   const { currentUser } = useAuth();
+    const { currentUser } = useAuth();
+    useEffect(() => {
+        props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+    }, []);
 
-   window.addEventListener("scroll", revealLeft);
+    useEffect(() => {
+        window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+    }, [props.sport]);
+
+    window.addEventListener("scroll", revealLeft);
     window.addEventListener("scroll", revealRight);
     window.addEventListener("scroll", revealTop);
     window.addEventListener("scroll", revealBottom);
@@ -149,86 +156,79 @@ export const Dashboard = (props) => {
     useEffect(() => {
         props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
     }, []);
- 
-   useEffect(() => {
-     window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
-   }, [props.sport]);
 
-   // window.addEventListener("scroll", reveal);
-   //   reveal();
+    useEffect(() => {
+        window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+    }, [props.sport]);
 
-   const [count, setCount] = useState(1);
+    const navigate = useNavigate();
 
-   useEffect(() => {
-     setCount(JSON.parse(window.sessionStorage.getItem("count")));
-   }, []);
- 
-   useEffect(() => {
-     window.sessionStorage.setItem("count", count);
-   }, [count]);
+    function navg() {
+        navigate("/sport-menu");
+    }
 
-   const navigate = useNavigate();
-   function navg(){
-       navigate("/sport-menu");
-   }
-
-   const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
-   async function handleClick(value, index){
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+    async function handleClick(value, index) {
         props.setSport([value, maxTeamPlayers[index], minTeamPlayers[index], "team"]);
+        await sleep(10);
+        navg();
+    }
+    async function setSportSingles(value, index) {
+        props.setSport([value, 1, 1, "single"]);
         // navigate("/sport-menu");
         await sleep(10);
         navg();
-   }
- 
-   return (
-       <>
-           {/* Banner */}
-           <div className="main-banner" id="top">
-           <img src={spandanNewImg} className="blackLogo blob" style={{ width: "92%", borderRadius: "20px", marginLeft: "auto", marginRight: "auto", maxWidth: "700px", display: "none" }} />
+    }
+
+    return (
+        <>
+            {/* Banner */}
+            <div className="main-banner" id="top">
+                <img src={spandanNewImg} className="blackLogo blob" style={{ width: "92%", borderRadius: "20px", marginLeft: "auto", marginRight: "auto", maxWidth: "700px", display: "none" }} />
                 <img src={spandanImg} className="normalLogo blob" style={{ width: "98%", borderRadius: "20px", marginLeft: "auto", marginRight: "auto", display: "block" }} />
-           </div>
- 
-                   <section className="section" id="features">
-                       {/* Team Sports */}
-                       <div className="container" id="TeamSports">
-                           <div className="row">
-                               <div className="col-lg-6 offset-lg-3">
-                                   <div className="section-heading">
-                                       <img src={lineDecImg} alt="waves" />
-                                       <h2>Team <em> Sports</em></h2>
-                                       <img src={lineDecImg} alt="waves" />
-                                       {/* <img src={lineDecImg} alt="waves"/> */}
-                                       {/* <p>Training Studio is free CSS template for gyms and fitness centers. You are allowed to use
+            </div>
+
+            <section className="section" id="features">
+                {/* Team Sports */}
+                <div className="container" id="TeamSports">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <div className="section-heading">
+                                <img src={lineDecImg} alt="waves" />
+                                <h2>Team <em> Sports</em></h2>
+                                <img src={lineDecImg} alt="waves" />
+                                {/* <img src={lineDecImg} alt="waves"/> */}
+                                {/* <p>Training Studio is free CSS template for gyms and fitness centers. You are allowed to use
                           this layout for your business website.</p> */}
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div className="wrapperCard">
-                           <div className="cards">
-                               {doubleSports.map((value, index) => {
-                                   return (
-                                       <figure className="card"
-                                       onClick={()=> handleClick(value, index)}>
-                                           <img src={DoublesSportImgs[index]} />
-                                           <figcaption style={{ transform: "none", fontSize: "smaller" }}>{value}</figcaption>
-                                       </figure>)
-                               })}
-                           </div>
-                       </div>
- 
-                       {/* Single Sports */}
-                       <div className="container" id="SinglePlayer">
-                           <div className="row">
-                               <div className="col-lg-6 offset-lg-3">
-                                   <div className="section-heading">
-                                       <img src={lineDecImg} alt="waves" />
-                                       <h2>Single <em> Player</em></h2>
-                                       <img src={lineDecImg} alt="waves" />
-                                       {/* <img src={lineDecImg} alt="waves"/> */}
-                                       {/* <p>Training Studio is free CSS template for gyms and fitness centers. You are allowed to use
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="wrapperCard">
+                    <div className="cards">
+                        {doubleSports.map((value, index) => {
+                            return (
+                                <figure className="card"
+                                    onClick={() => handleClick(value, index)}>
+                                    <img src={DoublesSportImgs[index]} />
+                                    <figcaption style={{ transform: "none", fontSize: "smaller" }}>{value}</figcaption>
+                                </figure>)
+                        })}
+                    </div>
+                </div>
+
+                {/* Single Sports */}
+                <div className="container" id="SinglePlayer">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <div className="section-heading">
+                                <img src={lineDecImg} alt="waves" />
+                                <h2>Single <em> Player</em></h2>
+                                <img src={lineDecImg} alt="waves" />
+                                {/* <img src={lineDecImg} alt="waves"/> */}
+                                {/* <p>Training Studio is free CSS template for gyms and fitness centers. You are allowed to use
                           this layout for your business website.</p> */}
                             </div>
                         </div>
@@ -237,14 +237,12 @@ export const Dashboard = (props) => {
                 <div className="wrapperCard">
                     <div className="cards">
                         {singleSports.map((value, index) => {
-                            return (<Link to="sport-menu" onClick={() =>
-                                props.setSport([value, 1, 1, "single"])
-                            }>
-                                <figure className="card">
+                            return (
+                                <figure className="card"
+                                    onClick={() => setSportSingles(value, index)}>
                                     <img src={SinglesSportImgs[index]} />
                                     <figcaption style={{ transform: "none", fontSize: "smaller" }}>{value}</figcaption>
-                                </figure>
-                            </Link>)
+                                </figure>)
                         })}
                     </div>
                 </div>
@@ -386,7 +384,3 @@ export const Dashboard = (props) => {
         </>
     );
 };
-
-
-
-
