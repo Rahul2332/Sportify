@@ -305,7 +305,7 @@ export const Dashboard = (props) => {
                     <div className="row text-center">
                         <div className="col-xl-3 col-sm-6 mb-5 col-6 revealLeft">
                             <div className="bg-white rounded shadow-sm"><img src={Anurag} alt="" width="75%" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Anurag Naruka</h5>
+                                <h5 className="mb-0">Anurag Singh Naruka</h5>
                                 <ul className="social mb-0 list-inline mt-3">
 
                                     <li className="list-inline-item"><a href="https://www.instagram.com/anurag.singh.naruka/" className="social-link"><i className="fa fa-instagram" style={{ color: "black" }}></i></a></li>

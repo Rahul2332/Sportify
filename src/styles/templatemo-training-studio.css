@@ -1541,3 +1541,7 @@ responsive
     border-radius: 20px !important;
     border-color: black;
  } */
+
+ .mb-0{
+     font-size: small !important;
+ }
