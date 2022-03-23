@@ -115,11 +115,11 @@ export const ScoreCard = (props) => {
                     <h2>Team-A</h2>
                     <div className="updateScore">
                         <div className="fields">Name-A<input id="TeamName1" /></div>
-                        <div className="fields">Score<input id="score1" /></div>
+                        <div className="fields">Score<input id="score1" type="number"/></div>
                         {SportsWithSets.indexOf(props.sport[0]) != -1 ? <>
-                            <div className="fields">Enter Score Set 1<input id="team11" /></div>
-                            <div className="fields">Enter Score Set 2<input id="team12" /></div>
-                            <div className="fields">Enter Score Set 3<input id="team13" /></div>
+                            <div className="fields">Enter Score Set 1<input id="team11" type="number"/></div>
+                            <div className="fields">Enter Score Set 2<input id="team12" type="number"/></div>
+                            <div className="fields">Enter Score Set 3<input id="team13" type="number"/></div>
                         </>
                             : <></>}
                     </div>
@@ -129,11 +129,11 @@ export const ScoreCard = (props) => {
                     <h2>Team-B</h2>
                     <div className="updateScore">
                         <div className="fields">Name-A<input id="TeamName2" /></div>
-                        <div className="fields">Score<input id="score2" /></div>
+                        <div className="fields">Score<input id="score2" type="number"/></div>
                         {SportsWithSets.indexOf(props.sport[0]) != -1 ? <>
-                            <div className="fields">Enter Score Set 1<input id="team21" /></div>
-                            <div className="fields">Enter Score Set 2<input id="team22" /></div>
-                            <div className="fields">Enter Score Set 3<input id="team23" /></div>
+                            <div className="fields">Enter Score Set 1<input id="team21" type="number"/></div>
+                            <div className="fields">Enter Score Set 2<input id="team22" type="number"/></div>
+                            <div className="fields">Enter Score Set 3<input id="team23" type="number"/></div>
                         </>
                             : <></>}
                     </div>

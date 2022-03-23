@@ -54,8 +54,8 @@ const SinglesSportImgs = [tennisSinglesImg, badmintonSinglesImg, badmintonWomenS
 const EsportImgs = [valorantImg, fifaImg, csgoImg, pubgImg];
 
 // Sports names
-const doubleSports = ["Tennis Doubles", "Football", "Badminton Men Doubles", "Badminton Women Doubles", "Badminton Mixed Doubles", "Basketball 3v3", "Basketball 5v5", "Cricket", "Table Tennis Doubles", "Volleyball", "Tug Of War", "Carrom", "Gully Cricket", "Foosball"];
-const singleSports = ["Tennis Singles", "Badminton Men Singles", "Badminton Women Singles", "T.T. Men Singles", "T.T. Women Singles", "Chess"];
+const doubleSports = ["Lawn Tennis Doubles", "Football", "Badminton Men Doubles", "Badminton Women Doubles", "Badminton Mixed Doubles", "Basketball 3v3", "Basketball 5v5", "Cricket", "Table Tennis Doubles", "Volleyball", "Tug Of War", "Carrom", "Gully Cricket", "Foosball"];
+const singleSports = ["Lawn Tennis Singles", "Badminton Men Singles", "Badminton Women Singles", "TT Men Singles", "TT Women Singles", "Chess"];
 const ESports = ["Valorant", "FIFA", "CSGO", "PUB-G"];
 
 const minTeamPlayers = [2, 7, 2, 2, 2, 3, 6, 10, 2, 7, 8, 2, 5, 2];
@@ -265,21 +265,22 @@ export const Dashboard = (props) => {
                           this layout for your business website.</p> */}
                             </div>
                         </div>
-
                     </div>
                 </div>
 
                 <div className="wrapperCard">
                     <div className="cards">
                         {ESports.map((value, index) => {
-                            return (<Link to="sport-menu" onClick={() =>
+                            return (
+                            <Link to="#" onClick={() =>
                                 props.setSport([value, maxETeamPlayers[index], minETeamPlayers[index], "team"])
                             }>
                                 <figure className="card">
                                     <img src={EsportImgs[index]} />
                                     <figcaption style={{ transform: "none", fontSize: "smaller" }}>{value}</figcaption>
                                 </figure>
-                            </Link>)
+                            </Link>
+                            )
                         })}
                     </div>
                 </div>
