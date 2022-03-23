@@ -27,15 +27,15 @@ export const ScoreSet = (props) => {
   fixtures();
 
   function fixtures() {
-    console.log("fixtures...");
-  var key = props.teamKey;
+    var key = props.teamKey;
 
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `${props.sport[0]}/Fixture/${key}`)).then((snapshot) => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `${props.sport[0]}/Fixture/${key}`)).then((snapshot) => {
       if (snapshot.exists()) {
         var TeamName1 = snapshot.val()["TeamA"];
         var TeamName2 = snapshot.val()["TeamB"];
-
+        var score1 = snapshot.val()["ScoreA"];
+        var score2 = snapshot.val()["ScoreB"];
         var team11 = snapshot.val()["Aset1"];
         var team12 = snapshot.val()["Aset2"];
         var team13 = snapshot.val()["Aset3"];
@@ -45,6 +45,8 @@ export const ScoreSet = (props) => {
 
         document.getElementById("TeamA").innerText = TeamName1;
         document.getElementById("TeamB").innerText = TeamName2;
+        document.getElementById("scoreA").innerText = score1;
+        document.getElementById("scoreB").innerText = score2;
         document.getElementById("setA1").innerText = team11;
         document.getElementById("setA2").innerText = team12;
         document.getElementById("setA3").innerText = team13;
@@ -67,8 +69,8 @@ export const ScoreSet = (props) => {
           else TeamBScore++;
         }
 
-        document.getElementById("scoreA").innerText = TeamAScore;
-        document.getElementById("scoreB").innerText = TeamBScore;
+        // document.getElementById("scoreA").innerText = TeamAScore;
+        // document.getElementById("scoreB").innerText = TeamBScore;
       } else {
         console.log("No data available");
       }
@@ -117,7 +119,7 @@ export const ScoreSet = (props) => {
         <div className="toolbar">
           <img
             type="submit"
-            // onClick={fixtures}
+            onClick={fixtures}
             id="butt"
             className="btn btn_live refreshBtn"
             src={refreshIcon}

@@ -177,8 +177,9 @@ export const ViewFixtures = (props) => {
         viewBtn.innerHTML = "View";
         // viewBtn.onclick = async () => { keySetTeam(teamA[i] + teamB[i]); };
         // viewBtn.setAttribute("onclick", `keySetTeam(${teamA[i] + teamB[i]})`);
-        viewBtn.onclick = function (){
+        viewBtn.onclick = async function (){
           props.setTeamKey(teamA[i] + teamB[i]);
+          await sleep(10);
         }
         anchor.appendChild(viewBtn);
 

@@ -12,52 +12,70 @@ import {
   get,
   child,
 } from "firebase/database";
+import { useEffect } from "react";
 
-export const ScoreNoSet = () => {
-  // fixtures();
+export const ScoreNoSet = (props) => {
+  useEffect(() => {
+    props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
+  }, []);
 
-  // function fixtures() {
-  //   var xxx = "anurag";
-  //   // document.getElementById("butt").addEventListener("click", (e) => {
-  //   // firebase.database().ref(`Basketball/Fixture/${xxx}`).get().then(snapshot => {
-  //   const dbRef = ref(getDatabase());
-  //   get(child(dbRef, `${currSport[0]}/Fixture/${xxx}`)).then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       var TeamName1 = snapshot.val()["TeamA"];
-  //       var TeamName2 = snapshot.val()["TeamB"];
+  useEffect(() => {
+    props.setTeamKey(window.sessionStorage.getItem("teamKey"));
+    console.log(props.teamKey);
+  }, []);
 
-  //       var team11 = snapshot.val()["Aset1"];
-  //       var team12 = snapshot.val()["Aset2"];
-  //       var team13 = snapshot.val()["Aset3"];
-  //       var team21 = snapshot.val()["Bset1"];
-  //       var team22 = snapshot.val()["Bset2"];
-  //       var team23 = snapshot.val()["Bset3"];
+  fixtures();
 
-  //       document.getElementById("TeamA").innerText = TeamName1;
-  //       document.getElementById("TeamB").innerText = TeamName2;
-  //       document.getElementById("setA1").innerText = team11;
-  //       document.getElementById("setA2").innerText = team12;
-  //       document.getElementById("setA3").innerText = team13;
-  //       document.getElementById("setB1").innerText = team21;
-  //       document.getElementById("setB2").innerText = team22;
-  //       document.getElementById("setB3").innerText = team23;
+  function fixtures() {
+    var key = props.teamKey;
 
-  //       let TeamAScore = 0,
-  //         TeamBScore = 0;
-  //       if (team11 > team21) TeamAScore++;
-  //       else TeamBScore++;
-  //       if (team12 > team22) TeamAScore++;
-  //       else TeamBScore++;
-  //       if (team13 > team23) TeamAScore++;
-  //       else TeamBScore++;
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `${props.sport[0]}/Fixture/${key}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        var TeamName1 = snapshot.val()["TeamA"];
+        var TeamName2 = snapshot.val()["TeamB"];
+        var score1 = snapshot.val()["ScoreA"];
+        var score2 = snapshot.val()["ScoreB"];
+        // var team11 = snapshot.val()["Aset1"];
+        // var team12 = snapshot.val()["Aset2"];
+        // var team13 = snapshot.val()["Aset3"];
+        // var team21 = snapshot.val()["Bset1"];
+        // var team22 = snapshot.val()["Bset2"];
+        // var team23 = snapshot.val()["Bset3"];
 
-  //       document.getElementById("scoreA").innerText = TeamAScore;
-  //       document.getElementById("scoreB").innerText = TeamBScore;
-  //     } else {
-  //       console.log("No data available");
-  //     }
-  //   });
-  // }
+        document.getElementById("TeamA").innerText = TeamName1;
+        document.getElementById("TeamB").innerText = TeamName2;
+        document.getElementById("scoreA").innerText = score1;
+        document.getElementById("scoreB").innerText = score2;
+        // document.getElementById("setA1").innerText = team11;
+        // document.getElementById("setA2").innerText = team12;
+        // document.getElementById("setA3").innerText = team13;
+        // document.getElementById("setB1").innerText = team21;
+        // document.getElementById("setB2").innerText = team22;
+        // document.getElementById("setB3").innerText = team23;
+
+        // let TeamAScore = 0, TeamBScore = 0;
+
+        // if(team11 != team21){
+        //   if (team11 > team21) TeamAScore++;
+        //   else TeamBScore++;
+        // }
+        // if(team12 != team22){
+        //   if (team12 > team22) TeamAScore++;
+        //   else TeamBScore++;
+        // }
+        // if(team13 != team23){
+        //   if (team13 > team23) TeamAScore++;
+        //   else TeamBScore++;
+        // }
+
+        // document.getElementById("scoreA").innerText = TeamAScore;
+        // document.getElementById("scoreB").innerText = TeamBScore;
+      } else {
+        console.log("No data available");
+      }
+  });
+  }
 
   return (
     <div id="score-no-setID" style={{ marginTop: "120px" }}>
@@ -85,7 +103,7 @@ export const ScoreNoSet = () => {
       <div className="toolbar">
         <img
           type="submit"
-          // onClick={fixtures}
+          onClick={fixtures}
           id="butt"
           className="btn btn_live refreshBtn"
           src={refreshIcon}
