@@ -554,3 +554,40 @@ small b {
         transform: rotate(-40deg);
     }
 }
+
+.ScoreCardCreate{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    --start: 15%;
+    /* height: 130px; */
+    background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(54, 89, 219, 0.33) 10%, rgba(54, 89, 219, 0.33) 17%), linear-gradient(to right, #5b7cfa, #3659db);
+    color: #fff;
+    position: relative;
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+
+}
+
+.ScoreCardCreate h3{
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: xxx-large;
+    color: #00165a;
+    text-align: center;
+}
+.ScoreCardCreate label{
+    /* text-transform: uppercase; */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+    /* color: #00165a; */
+}
+.ScoreCardCreate input{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: large;
+    text-align: center;
+}

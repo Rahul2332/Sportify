@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import '../styles/createFixtures.css';
-import { getDatabase, ref, set, push, update } from 'firebase/database';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import "../styles/createFixtures.css";
+import { getDatabase, ref, set, push, update } from "firebase/database";
+import { useEffect } from "react";
 
 //import { isAdmin } from "./Login";
 
@@ -34,6 +34,7 @@ export const CreateFixtures = (props) => {
 				TeamB: team2,
 				Time: time,
 				Date: date,
+				Status: "Upcoming",
 				ScoreA: '0',
 				ScoreB: '0',
 				Aset1: '0',
@@ -108,7 +109,7 @@ export const CreateFixtures = (props) => {
 					value={input}
 					onChange={(e) => {
 						let btn = document.getElementById("add_fixture_db");
-						btn.innerHTML = 'SUBMIT';
+						btn.innerHTML = 'Add Fixtures';
 						setInput(e.target.value);
 						setFlag(false);
 					}}

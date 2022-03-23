@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
  
-export const NavAfterLogin = () => {
+export const NavAfterLogin = (props) => {
+  useEffect(() => {
+    props.setAdmin(JSON.parse(window.sessionStorage.getItem("isAdmin")));
+  }, []);
+  useEffect(() => {
+    window.sessionStorage.setItem("isAdmin", JSON.stringify(props.isAdmin));
+}, [props.isAdmin]);
+  
  const [error, setError] = useState("");
  const { currentUser, logout } = useAuth();
  const navigate = useNavigate();
@@ -10,6 +17,7 @@ export const NavAfterLogin = () => {
  async function handleLogout() {
    try {
      await logout();
+     props.setAdmin(false);
      navigate.push("/");
    } catch {
      setError("Logout Failed");
@@ -94,7 +102,8 @@ export const NavAfterLogin = () => {
                </strong>
              </Link>
            </li> */}
-           {/* <li className="nav-item">
+           {props.isAdmin ?
+           <li className="nav-item">
              <button
                onClick={handleLogout}
                className="btn btn-danger ms-4"
@@ -102,7 +111,7 @@ export const NavAfterLogin = () => {
              >
                Logout
              </button>
-           </li> */}
+           </li> :
           <ul className="navbar-nav" id="SignupBtnID" >
            <li className="nav-item" style={{
              minWidth: "200px", display: "flex",
@@ -118,7 +127,7 @@ export const NavAfterLogin = () => {
                </button>
              </Link>
            </li>
-           </ul>
+           </ul> }
  
          </div>
        </div>

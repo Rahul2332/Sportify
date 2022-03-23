@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import SpandanLogo from "../assets/spandan-removebg.png";
-import { isAdmin } from "./Login";
 
 const rules = {
   "Tennis Doubles":
@@ -68,13 +67,19 @@ export const Menu = (props) => {
   useEffect(() => {
     props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
     console.log(props.sport)
-}, []);
+  }, []);
+
   // useEffect(() => {
-  //   window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
-  // }, [props.sport]);
-    // const handleClick = () => {
-    //     window.open(rules[currSport[0]]);
-    // };
+  //   props.setAdmin(JSON.parse(window.sessionStorage.getItem("isAdmin")));
+  // }, []);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("CurrentSport", JSON.stringify(props.sport));
+  }, [props.sport]);
+
+    const handleClick = () => {
+        window.open(rules[props.sport[0]]);
+    };
 
   return (
     <div className="menu-a">
@@ -88,7 +93,7 @@ export const Menu = (props) => {
       </div>
       <main className="leaderboard__profiles">
         <h2>{props.sport[0]}</h2>
-        <Link
+        {/* <Link
           to="/register-for-sport"
           role="button"
           className="leaderboard__name button__link"
@@ -96,8 +101,8 @@ export const Menu = (props) => {
           <article className="leaderboard__profile" id="menu_item0">
             Create team
           </article>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           to="/registered-teams"
           role="button"
           className="leaderboard__name button__link"
@@ -105,25 +110,26 @@ export const Menu = (props) => {
           <article className="leaderboard__profile" id="menu_item1">
             View Teams
           </article>
-        </Link>
+        </Link> */}
         <div className="leaderboard__name button__link">
           <article
             className="leaderboard__profile"
             id="menu_item3"
-            // onClick={handleClick}
+            onClick={handleClick}
           >
             Rules
           </article>
         </div>
-        <Link
-          to="/create-fixtures"
-          role="button"
-          className="leaderboard__name button__link"
-        >
+        {props.isAdmin ?
+          <Link
+            to="/create-fixtures"
+            role="button"
+            className="leaderboard__name button__link"
+          >
           <article className="leaderboard__profile" id="menu_item2">
             Create Fixtures
           </article>
-        </Link>
+        </Link> : <></>}
         <Link to="/view-fixtures">
           <article className="leaderboard__profile" id="menu_item2">
             Fixtures
