@@ -31,7 +31,7 @@ export default function Signup() {
     }
 
 
-    const database = getDatabase();
+    // const database = getDatabase();
 
     const dbRef = ref(getDatabase());
     get(child(dbRef, `Users/`)).then((snapshot) => {
@@ -41,18 +41,18 @@ export default function Signup() {
       }
     });
 
-    let uname = document.getElementById("username").value;
+    // let uname = document.getElementById("username").value;
     // set(ref(database, `Users/`), {
     //   [emailRef.current.value] : emailRef.current.value,
     // });
-    let email = (emailRef.current.value).toLowerCase();
-    console.log(email);
+    // let email = (emailRef.current.value).toLowerCase();
+    // console.log(email);
 
-    let contact = document.getElementById("contact").value;
-    set(ref(database, `Users/${uname}`), {
-      "email" : email,
-      "contact" : contact
-    });
+    // let contact = document.getElementById("contact").value;
+    // set(ref(database, `Users/${uname}`), {
+    //   "email" : email,
+    //   "contact" : contact
+    // });
 
     let data = [];
     try {
@@ -90,7 +90,7 @@ export default function Signup() {
             required
           />
         </div>
-        <div className="form-outline mb-4">
+        {/* <div className="form-outline mb-4">
           <label className="form-label"> Username </label>
           <input
             type="text"
@@ -109,7 +109,7 @@ export default function Signup() {
             // ref={emailRef}
             required
           />
-        </div>
+        </div> */}
         <div className="form-outline mb-4">
           <label className="form-label"> Password </label>
           <input

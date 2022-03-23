@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import '../styles/createFixtures.css';
-import { getDatabase, ref, set, push, update } from 'firebase/database';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import "../styles/createFixtures.css";
+import { getDatabase, ref, set, push, update } from "firebase/database";
+import { useEffect } from "react";
 
 //import { isAdmin } from "./Login";
 
