@@ -108,7 +108,7 @@ export const CreateFixtures = (props) => {
 					value={input}
 					onChange={(e) => {
 						let btn = document.getElementById("add_fixture_db");
-						btn.innerHTML = 'Add Fixtures';
+						btn.innerHTML = 'SUBMIT';
 						setInput(e.target.value);
 						setFlag(false);
 					}}

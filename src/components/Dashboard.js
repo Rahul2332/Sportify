@@ -18,9 +18,14 @@ import lineDecImg from '../assets/line-dec.png'
 import footballImg from "../assets/football.svg"
 import badmintonSinglesImg from "../assets/badminton-singles.jpg"
 import badmintonDoublessImg from "../assets/badminton-doubles.png"
+import badmintonMenDoublesImg from "../assets/BadmintonMenDoubles.jpeg"
+import badmintonWomenDoublesImg from "../assets/BadmintonWomenDoubles.jpeg"
+import badmintonWomenSinglesImg from "../assets/badmintonWomenSingle.jpg"
 import basketballImg from '../assets/basketball.svg'
+import basketball5v5Img from '../assets/Basketball5v5.jpeg'
 import tennisSinglesImg from '../assets/tennis-singles.jpg'
 import tennisDoublesImg from '../assets/tennis-doubles.svg'
+import TTSinglesMen from '../assets/TTSinglesMen.jpg'
 import cricketImg from '../assets/cricket.jpg'
 import gullyCricketImg from '../assets/gully-cricket.png'
 import tableTennisDoublesImg from '../assets/table-tennis-doubles.jpg'
@@ -44,13 +49,13 @@ import Rahul from "../assets/Team/RahulMountain.jpg"
 import Rakshit from "../assets/Team/RakshitBlack.jpeg"
 
 // Images Array
-const DoublesSportImgs = [tennisDoublesImg, footballImg, badmintonDoublessImg, badmintonDoublessImg, badmintonDoublessImg, basketballImg, basketballImg, cricketImg, tableTennisDoublesImg, volleyballImg, tugOfWarImg, carromImg, gullyCricketImg, foosballImg];
-const SinglesSportImgs = [tennisSinglesImg, badmintonSinglesImg, badmintonSinglesImg, tableTennisSinglesImg, tableTennisSinglesImg, chessImg, gymEventImg];
+const DoublesSportImgs = [tennisDoublesImg, footballImg, badmintonMenDoublesImg, badmintonWomenDoublesImg, badmintonDoublessImg, basketballImg, basketball5v5Img, cricketImg, tableTennisDoublesImg, volleyballImg, tugOfWarImg, carromImg, gullyCricketImg, foosballImg];
+const SinglesSportImgs = [tennisSinglesImg, badmintonSinglesImg, badmintonWomenSinglesImg, TTSinglesMen, tableTennisSinglesImg, chessImg];
 const EsportImgs = [valorantImg, fifaImg, csgoImg, pubgImg];
 
 // Sports names
 const doubleSports = ["Tennis Doubles", "Football", "Badminton Men Doubles", "Badminton Women Doubles", "Badminton Mixed Doubles", "Basketball 3v3", "Basketball 5v5", "Cricket", "Table Tennis Doubles", "Volleyball", "Tug Of War", "Carrom", "Gully Cricket", "Foosball"];
-const singleSports = ["Tennis Singles", "Badminton Men Singles", "Badminton Women Singles", "T.T. Men Singles", "T.T. Women Singles", "Chess", "Gym Event"];
+const singleSports = ["Tennis Singles", "Badminton Men Singles", "Badminton Women Singles", "T.T. Men Singles", "T.T. Women Singles", "Chess"];
 const ESports = ["Valorant", "FIFA", "CSGO", "PUB-G"];
 
 const minTeamPlayers = [2, 7, 2, 2, 2, 3, 6, 10, 2, 7, 8, 2, 5, 2];

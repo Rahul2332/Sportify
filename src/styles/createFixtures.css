@@ -343,6 +343,22 @@ top: 0;
     font-size: xx-large;
 }
 
+@media (max-width: 450px) {
+    .fixture-inline {
+        font-size: small;
+    }
+    .createFixtures-leaderboard__profile{
+        font-size: xx-small;
+        padding: 5px !important;
+    }
+    p{
+        margin-bottom: 0 !important;
+    }
+    .dateContainer{
+        margin-right: 0px !important;
+    }
+}
+
 .Fixture-button-center {
     display: flex;
     justify-content: center;
@@ -412,5 +428,5 @@ top: 0;
 
 .dateContainer{
     margin-left: 15px !important;
-    margin-right: 15px !important;
+    margin-right: 15px;
 }
