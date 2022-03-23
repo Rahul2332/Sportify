@@ -1,10 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState , useEffect} from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
-export var isAdmin = false;
+export default function Login(props) {
+  useEffect(() => {
+      props.setAdmin(JSON.parse(window.sessionStorage.getItem("isAdmin")));
+  }, []);
 
-export default function Login() {
+  useEffect(() => {
+      window.sessionStorage.setItem("isAdmin", JSON.stringify(props.isAdmin));
+  }, [props.isAdmin]);
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
@@ -20,7 +26,7 @@ export default function Login() {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
       if (emailRef.current.value === "spandan2022admin@gmail.com")
-        isAdmin = true;
+        props.setAdmin(true);
       navigate("/");
     } catch {
       setError("Incorrect Username or Password");

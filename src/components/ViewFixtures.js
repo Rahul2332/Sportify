@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/listboxFix.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
 
 import {
   getDatabase,
@@ -39,6 +39,14 @@ export const ViewFixtures = (props) => {
 		'Foosball',
 		'Chess',
 	];
+  // const [isAdmin, setAdmin] = useState(false);
+
+  // useEffect(() => {
+  //     setAdmin(JSON.parse(window.sessionStorage.getItem("isAdmin")));
+  // }, []);
+  // useEffect(() => {
+  //     window.sessionStorage.setItem("isAdmin", JSON.stringify(isAdmin));
+  // }, [isAdmin]);
 
   useEffect(() => {
     props.setSport(JSON.parse(window.sessionStorage.getItem("CurrentSport")));
@@ -166,10 +174,15 @@ export const ViewFixtures = (props) => {
         timeInp.setAttribute("id", `time_${i}`);
         timeInp.innerHTML = time[i];
 
-        if(SportsWithSets.indexOf(props.sport[0]) != -1)
-          anchor.setAttribute("href", "/score-set");
-        if(SportsWithoutSet.indexOf(props.sport[0]) != -1)
-          anchor.setAttribute("href", "/score-no-set");
+        if(!props.isAdmin){
+          if(SportsWithSets.indexOf(props.sport[0]) != -1)
+            anchor.setAttribute("href", "/score-set");
+          if(SportsWithoutSet.indexOf(props.sport[0]) != -1)
+            anchor.setAttribute("href", "/score-no-set");
+        }
+        if(props.isAdmin){
+          anchor.setAttribute("href", "/score-card");
+        }
         
         anchor.classList.add("viewFixtures-Submit");
         anchor.classList.add("viewFixtures-Submit-mobile");
