@@ -1,6 +1,7 @@
 import React, { useRef, useState , useEffect} from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 
 export default function Login(props) {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Login(props) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const admins = ["spandan2022admin@gmail.com", 'anurag.naruka@iiitb.ac.in', 'rahul.jain@iiitb.ac.in', 'jainav.sanghvi@iiitb.ac.in', 'rakshit.bang@iiitb.ac.in', 'adrij.sharma@iiitb.ac.in','sai.snehith@iiitb.ac.in','sairama.sashank@iiitb.ac.in','saket.gurjar@iiitb.ac.in','Shaikh.Fahed@iiitb.ac.in','sukhamjot.singh@iiitb.ac.in','nagasri.vaishnavi@iiitb.ac.in','Chakradhar.yamala@iiitb.ac.in','Pranay.Kumar@iiitb.ac.in','Anwit.Damale@iiitb.ac.in','Yash.Mogal@iiitb.ac.in','Dheeraj.Karnam@iiitb.ac.in','Mayank.Chadha@iiitb.ac.in','Srinivas.k@iiitb.ac.in','SriVishnu.Lahari@iiitb.ac.in', 'Subrat.Bahuguna@iiitb.ac.in', 'Ronit.Jain@iiitb.ac.in', 'Rakshit.Gupta@iiitb.ac.in', 'pratyush.nandi@iiitb.ac.in', 'Tanishq.Jaswani@iiitb.ac.in', 'ripunjay.singh@iiitb.ac.in', 'Sidda.Rahul@iiitb.ac.in', 'yashovardhan.reddy@iiitb.ac.in', 'Vismaya.Solanki@iiitb.ac.in', 'prasanth.kumar@iiitb.ac.in', 'Utkarsh.Prafulchandra@iiitb.ac.in', 'rvs.ajith@iiitb.ac.in','chaitanya.manas@iiitb.ac.in','rahulsidda133@gmail.com', 'Muni.HarshaVardhan@iiitb.ac.in', 'yash.koushik@iiitb.ac.in'];
 
   async function handleSubmitLogin(e) {
     e.preventDefault();
@@ -25,8 +27,12 @@ export default function Login(props) {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      if (emailRef.current.value === "spandan2022admin@gmail.com")
-        props.setAdmin(true);
+      for(let admin of admins){
+        if (emailRef.current.value === admin){
+          props.setAdmin(true);
+          break;
+        }
+      }
       navigate("/");
     } catch {
       setError("Incorrect Username or Password");

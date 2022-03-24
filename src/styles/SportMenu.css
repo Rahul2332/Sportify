@@ -1,4 +1,4 @@
- .leaderboard__profiles {
+ /* .leaderboard__profiles {
      background-color: #fff;
      border-radius: 12px 12px 12px 12px;
      padding: 15px 15px 20px;
@@ -9,6 +9,22 @@
      max-width: 600px;
      box-shadow: 5px 5px black;
      height: 300px;
+ } */
+ 
+ .leaderboard__profiles {
+     /* background-color: #fff; */
+     background-color: #e9ecef;
+     border-radius: 12px 12px 12px 12px;
+     padding: 15px 15px 20px;
+     display: grid;
+     row-gap: 8px;
+     /* width: 25%; */
+     min-width: 200px;
+     max-width: 600px;
+     box-shadow: 5px 5px black;
+     height: 300px;
+     margin-bottom: 10px;
+     text-align: center;
  }
  
  .menu-a {
