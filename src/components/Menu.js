@@ -12,7 +12,7 @@ const rules = {
     "https://drive.google.com/file/d/1IjPWc6wYq0zMhdSyRZQkMoHZEJbk8ZlL/view?usp=sharing",
   "Badminton Men Doubles":
     "https://drive.google.com/file/d/1OtDPDps_mqGYts_E7ngqX9i2C8Weqbqn/view?usp=sharing",
-  "Badminton  Women Doubles":
+  "Badminton Women Doubles":
     "https://drive.google.com/file/d/1OtDPDps_mqGYts_E7ngqX9i2C8Weqbqn/view?usp=sharing",
   "Badminton Mixed Doubles":
     "https://drive.google.com/file/d/1OtDPDps_mqGYts_E7ngqX9i2C8Weqbqn/view?usp=sharing",

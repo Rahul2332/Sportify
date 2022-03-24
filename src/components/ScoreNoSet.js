@@ -85,7 +85,7 @@ export const ScoreNoSet = (props) => {
         <div className="box box-down cyan">
           <h2 id="TeamA"> Team - A </h2>
           <div className="set-finals">
-              <p id="scoreA"> 2 </p>
+              <p id="scoreA"> 0 </p>
           </div>
         </div>
         <div className="box box-down cyan">
@@ -101,7 +101,7 @@ export const ScoreNoSet = (props) => {
             <p> SET - 3 </p> <p id="setB3"> score </p>
           </div> */}
           <div className="set-finals">
-              <p id="scoreB"> 5 </p>
+              <p id="scoreB"> 0 </p>
           </div>
         </div>
       </div>
