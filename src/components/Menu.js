@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import SpandanLogo from "../assets/spandan-removebg.png";
 
 const rules = {
-  "Tennis Doubles":
+  "Lawn Tennis Doubles":
     "https://drive.google.com/file/d/1aC5w_6sw0bL8rcIVruFebCHYtOHy008a/view?usp=sharing",
   Football:
     "https://drive.google.com/file/d/1IjPWc6wYq0zMhdSyRZQkMoHZEJbk8ZlL/view?usp=sharing",
@@ -42,15 +42,15 @@ const rules = {
     "https://drive.google.com/file/d/1HnxWtexlRo1WnlJT9H-h-JCZop7X-tct/view?usp=sharing",
 
   //**** */
-  "Tennis Singles":
+  "Lawn Tennis Singles":
     "https://drive.google.com/file/d/1aC5w_6sw0bL8rcIVruFebCHYtOHy008a/view?usp=sharing",
   "Badminton Men Singles":
     "https://drive.google.com/file/d/1OtDPDps_mqGYts_E7ngqX9i2C8Weqbqn/view?usp=sharing",
   "Badminton Women Singles":
     "https://drive.google.com/file/d/1OtDPDps_mqGYts_E7ngqX9i2C8Weqbqn/view?usp=sharing",
-  "T.T. Men Singles":
+  "TT Men Singles":
     "https://drive.google.com/file/d/1gMRfBI25FdmRAY5_C-oUYJDCELeCjsxO/view?usp=sharing",
-  "T.T. Women Singles":
+  "TT Women Singles":
     "https://drive.google.com/file/d/1gMRfBI25FdmRAY5_C-oUYJDCELeCjsxO/view?usp=sharing",
   Chess:
     "https://drive.google.com/file/d/1HnxWtexlRo1WnlJT9H-h-JCZop7X-tct/view?usp=sharing",

@@ -12,7 +12,7 @@ export const ScoreCard = (props) => {
     }, []);
 
     let SportsWithSets = [
-        'Tennis Doubles',
+        'Lawn Tennis Doubles',
         'Badminton Men Doubles',
         'Badminton Women Doubles',
         'Badminton Mixed Doubles',
@@ -20,11 +20,11 @@ export const ScoreCard = (props) => {
         'Volleyball',
         'Tug Of War',
         'Carrom',
-        'Tennis Singles',
+        'Lawn Tennis Singles',
         'Badminton Men Singles',
         'Badminton Women Singles',
-        'T.T. Men Singles',
-        'T.T. Women Singles',
+        'TT Men Singles',
+        'TT Women Singles',
     ];
 
     let SportsWithoutSet = [

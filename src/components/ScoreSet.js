@@ -96,9 +96,9 @@ export const ScoreSet = (props) => {
       }>
         <div id="StatusID" className="toolbar">
           <a className="btn btn_live" id="live-status"
-            // style={
-            //   { display: "none" }
-            // }
+            style={
+              { display: "none" }
+            }
             >
             Live
             <span className="live-icon"></span>
